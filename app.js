@@ -10,9 +10,9 @@ const DB_URL = "mongodb://localhost:27017/library";
 db.connect(DB_URL);
 
 // router
-const indexRouter = require("./routes/index");
-const loginRouter = require("./routes/login");
 const usersRouter = require("./routes/users");
+const productRouter = require("./routes/product");
+const orderRouter = require("./routes/order");
 
 var app = express();
 
@@ -25,9 +25,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/login", loginRouter);
+// using router handler
 app.use("/user", usersRouter);
+app.use("/product", productRouter);
+app.use("/order", orderRouter);
 
 app.use(function (req, res, next) {
   next(createError(404));
