@@ -36,10 +36,21 @@ router.post("/login", async (req, res) => {
       accessTokenSecret
     );
     res.status(200);
-    res.send({ username: user.username, acessToken: accessToken });
+    res.json({
+      code: 200,
+      message: "Login successfully",
+      data: {
+        username: user.username,
+        accessToken: accessToken,
+      },
+    });
   } else {
-    res.status(500);
-    res.send("Username or password incorrect");
+    res.status(200);
+    res.json({
+      code: 500,
+      message: "Username or password incorrect",
+      data: {},
+    });
   }
 });
 
