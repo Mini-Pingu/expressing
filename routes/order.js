@@ -19,8 +19,11 @@ router.post("/", authenticateJWT, async (req, res) => {
     today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
   const dateTime = date + " " + time;
 
+  const orderId = Date.now().toString().slice(1);
+  console.log("orderId", orderId);
+
   const order = new Order({
-    orderId: Date.now().toString().slice(1),
+    orderId: orderId,
     orderDateTime: dateTime,
     item: req.body.item,
   });

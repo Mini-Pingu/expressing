@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 // using router handler
-app.use("/user", usersRouter);
+app.use("/users", usersRouter);
 app.use("/product", productRouter);
 app.use("/order", orderRouter);
 
